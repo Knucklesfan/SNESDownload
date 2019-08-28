@@ -168,6 +168,7 @@ public class MainWindow {
 		txtrSuperMarioWorld.setWrapStyleWord(true);
 		txtrSuperMarioWorld.setLineWrap(true);
 		txtrSuperMarioWorld.setText(description);
+		txtrSuperMarioWorld.setEditable(false);
 		txtrSuperMarioWorld.setBounds(10, 276, 256, 106);
 		frame.getContentPane().add(txtrSuperMarioWorld);
 		

@@ -119,12 +119,36 @@ public class Download {
 	    p = execute.start();
 		 p.waitFor();
 		 Files.copy(Paths.get("patcher\\rom.smc"), Paths.get("hack\\rom.smc"), StandardCopyOption.REPLACE_EXISTING);
-		File file = new File("hack\\patch.bps");
-		file.delete();
-		file = new File("patcher\\rom.smc");
-		file.delete();
+		delete("hack\\patch.bps");
+		delete("patcher\\rom.smc");
         }
 
 	}
+	public static void saveLoad() throws IOException {
+        JFileChooser saver = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
+        int save = saver.showOpenDialog(null); 
+        File sav = saver.getSelectedFile();
+		 Files.copy(Paths.get(sav.getPath()), Paths.get("emulator\\Saves\\rom.srm"), StandardCopyOption.REPLACE_EXISTING);
+			JOptionPane.showMessageDialog(null, "Loaded Successfully!");
+
+		
+	}
+	public static void saveDump() throws IOException {
+        JFileChooser saver = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
+        saver.setSelectedFile(new File("rom.srm"));
+        int save = saver.showSaveDialog(null); 
+        File sav = saver.getSelectedFile();
+		 Files.copy(Paths.get("emulator\\Saves\\rom.srm"), Paths.get(sav.getPath()), StandardCopyOption.REPLACE_EXISTING);
+			JOptionPane.showMessageDialog(null, "Saved Successfully!");
+
+		
+	}
+	public static void delete(String string) {
+		// TODO Auto-generated method stub
+		File file = new File(string);
+		file.delete();
+
+	}
+
 }
 	

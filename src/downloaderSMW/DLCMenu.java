@@ -98,6 +98,7 @@ public class DLCMenu {
 		txtrSuperMarioWorld.setLineWrap(true);
 		txtrSuperMarioWorld.setText(description);
 		txtrSuperMarioWorld.setBounds(10, 276, 256, 106);
+		txtrSuperMarioWorld.setEditable(false);
 		frame.getContentPane().add(txtrSuperMarioWorld);
 		
 		JButton btnDownload = new JButton("DOWNLOAD");
@@ -119,7 +120,7 @@ public class DLCMenu {
 					Download.dlc(msu1temp, voicetemp);
 				
 				} catch (Exception e1) {
-					// ew try and catch are gross
+					// ew try and catch is gross
 					e1.printStackTrace();
 				}
 				MainWindow.lblDlcEnabled.setEnabled(true);

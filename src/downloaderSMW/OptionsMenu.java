@@ -4,6 +4,8 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
@@ -75,15 +77,34 @@ public class OptionsMenu {
 		txtrHereAtThe.setWrapStyleWord(true);
 		txtrHereAtThe.setText("Here at the Save management screen, you can delete your save, back up your save or import an external save file to play.");
 		txtrHereAtThe.setBounds(10, 39, 414, 58);
+		txtrHereAtThe.setEditable(false);
 		savemanagement.add(txtrHereAtThe);
 		
 		JButton btnLoadSave = new JButton("LOAD SAVE");
 		btnLoadSave.setBounds(20, 108, 123, 58);
 		savemanagement.add(btnLoadSave);
-		
-		JButton btnBackupSave = new JButton("BACKUP SAVE");
+		btnLoadSave.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.out.println("Load Pushed!");
+				try {
+					Download.saveLoad();
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					JOptionPane.showMessageDialog(null, "File not found exception! Did you forget to pick your save?");
+				}
+			}
+		});
+
+		JButton btnBackupSave = new JButton("EXPORT SAVE");
 		btnBackupSave.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				System.out.println("Export Pushed!");
+				try {
+					Download.saveDump();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					JOptionPane.showMessageDialog(null, "File not found exception! Did you forget to save your save?");
+				}
 			}
 		});
 		btnBackupSave.setBounds(301, 111, 123, 58);
@@ -94,6 +115,13 @@ public class OptionsMenu {
 		btnDeleteSavewarning.setForeground(Color.WHITE);
 		btnDeleteSavewarning.setBounds(20, 190, 404, 60);
 		savemanagement.add(btnDeleteSavewarning);
+		btnDeleteSavewarning.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.out.println("Delete Pushed!");
+				Download.delete("emulator\\Saves\\rom.srm");
+			}
+		});
+
 		
 		JPanel panel = new JPanel();
 		tabbedPane.addTab("Credits", null, panel, null);
@@ -108,6 +136,7 @@ public class OptionsMenu {
 		txtrSnesdownloadCreatedBy.setWrapStyleWord(true);
 		txtrSnesdownloadCreatedBy.setLineWrap(true);
 		txtrSnesdownloadCreatedBy.setBounds(0, 0, 449, 254);
+		txtrSnesdownloadCreatedBy.setEditable(false);
 		txtrSnesdownloadCreatedBy.setAlignmentX(Component.CENTER_ALIGNMENT);
 		panel.add(txtrSnesdownloadCreatedBy);
 	}
