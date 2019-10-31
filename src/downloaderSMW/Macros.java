@@ -68,7 +68,7 @@ public class Macros {
         if(!dir.exists()) dir.mkdirs();
         FileInputStream fis;
         //buffer for read and write data to file
-        byte[] buffer = new byte[1024];
+        byte[] buffer = new byte[2048];
         try {
             fis = new FileInputStream(zipFilePath);
             ZipInputStream zis = new ZipInputStream(fis);

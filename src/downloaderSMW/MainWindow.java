@@ -178,10 +178,10 @@ public class MainWindow {
 			public void actionPerformed(ActionEvent e) {
 				boolean msu1temp = false;
 				boolean voicetemp  = false;
-				if(chckbxMsu.isSelected()) {
+				if(msu1 && chckbxMsu.isSelected()) {
 					msu1temp = true;
 				}
-				if(chckbxVoices.isSelected()) {
+				if(voice && chckbxVoices.isSelected()) {
 					voicetemp = true;
 				}
 				try {

@@ -57,9 +57,7 @@ public class Setup {
 			String downlink = Macros.returnString(emuline, 0, "database.ini");
 			InputStream is = new URL(downlink).openStream();
 			Files.copy(is, Paths.get("image.png"), StandardCopyOption.REPLACE_EXISTING);
-			emuline = Macros.RetrieveLine("[DLCIMAGE]", "database.ini");
-			downlink = Macros.returnString(emuline, 0, "database.ini");
-			is = new URL(downlink).openStream();
+ 			is = new URL(downlink).openStream();
 			Files.copy(is, Paths.get("dlc.png"), StandardCopyOption.REPLACE_EXISTING);
 			JOptionPane.showMessageDialog(null, "Thank you for your time!");
 			emuline = Macros.RetrieveLine("[EXECUTABLE]", "database.ini");
